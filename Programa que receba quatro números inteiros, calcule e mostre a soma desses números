@@ -1,0 +1,14 @@
+
+#include <stdio.h>
+
+int main() {
+  int n1 = 22;
+  int n2 = 12;
+  int n3 = 2;
+  printf("Os numeros são:\n");
+  printf("%d, %d, %d\n", n1, n2, n3);
+  //soma:
+  float soma = (n1 + n2 + n3);
+  printf("A soma é %f", soma);
+  return 0;
+};
