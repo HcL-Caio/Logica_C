@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int validarSenha(const char *senha) {
+    int temMaiuscula = 0, temMinuscula = 0, temNumero = 0, temEspecial = 0;
+    int tamanho = strlen(senha);
+
+    if (tamanho < 8) {
+        return 0;
+    }
+
+    for (int i = 0; i < tamanho; i++) {
+        if (isupper(senha[i])) temMaiuscula = 1;
+        else if (islower(senha[i])) temMinuscula = 1;
+        else if (isdigit(senha[i])) temNumero = 1;
+        else if (strchr("!@#$%^&*()", senha[i])) temEspecial = 1;
+    }
+
+    return temMaiuscula && temMinuscula && temNumero && temEspecial;
+}
+
+int main() {
+    char senha[100];
+
+    printf("Digite a senha para validar: ");
+    scanf("%99s", senha);
+
+    if (validarSenha(senha)) {
+        printf("✅ Senha válida!\n");
+    } else {
+        printf("❌ Senha inválida. Ela deve ter:\n");
+        printf("- Pelo menos 8 caracteres\n");
+        printf("- Pelo menos 1 letra maiúscula\n");
+        printf("- Pelo menos 1 letra minúscula\n");
+        printf("- Pelo menos 1 número\n");
+        printf("- Pelo menos 1 caractere especial (!@#$%%^&*())\n");
+    }
+
+    return 0;
+}
